@@ -14,15 +14,20 @@ class App extends Component{
   super(props);
   this.state = {
     nombre:0,
-    color:"secondary"
+    color:Array("secondary","danger"),
   };
   }
   
-  aumenta = (nombreBoton) => {
-      let c = this.state.nombre;
-      c+=1;
-      this.setState({nombre:c})
-      this.setState({color:"danger"})
+  aumenta = (btn) => {
+      let cuantos = this.state.nombre;
+      let farbe = this.state.color;
+
+      if(farbe[btn]=="secondary"){
+        farbe[btn]="danger"
+        cuantos++;
+      }
+
+      this.setState({nombre:cuantos,color:farbe})
   }
 
   render(){
@@ -30,15 +35,15 @@ class App extends Component{
   <div className="App">
   <header className="App-header">
     </header><h1>Contador</h1>
-    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    <Boton color={this.state.color[0]} nombre={this.state.nombre} fn={(x)=>this.aumenta(x)}></Boton>
     {" "}
-    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    <Boton color={this.state.color[0]} nombre={this.state.nombre} fn={(x)=>this.aumenta(x)}></Boton>
     {" "}
-    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    <Boton color={this.state.color[0]} nombre={this.state.nombre} fn={(x)=>this.aumenta(x)}></Boton>
     {" "}
-    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    <Boton color={this.state.color[0]} nombre={this.state.nombre} fn={(x)=>this.aumenta(x)}></Boton>
     {" "}
-    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    <Boton color={this.state.color[0]} nombre={this.state.nombre} fn={(x)=>this.aumenta(x)}></Boton>
   </div>
   );
   }
