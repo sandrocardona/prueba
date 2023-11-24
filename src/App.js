@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'reactstrap';
+import {React} from 'react';
+import {Component} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function Boton(props){
+  return(
+  <Button color={props.color} nombre={props.nombre} onClick={props.fn} >{props.nombre}</Button>
+  )
 }
 
+class App extends Component{
+  constructor(props) {
+  super(props);
+  this.state = {
+    nombre:0,
+    color:"secondary"
+  };
+  }
+  
+  aumenta = (nombreBoton) => {
+      let c = this.state.nombre;
+      c+=1;
+      this.setState({nombre:c})
+      this.setState({color:"danger"})
+  }
+
+  render(){
+  return (
+  <div className="App">
+  <header className="App-header">
+    </header><h1>Contador</h1>
+    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    {" "}
+    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    {" "}
+    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    {" "}
+    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+    {" "}
+    <Boton color={this.state.color} nombre={this.state.nombre} fn={()=>this.aumenta()}></Boton>
+  </div>
+  );
+  }
+  }
 export default App;
